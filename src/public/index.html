@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Esse é o LightRadar! Criado para solucionar problemas energéticos regionais com base no que vocês contribuem.">
+  <meta name="author" content="RenanSGuedes">
+  <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="utils/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="utils/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="utils/favicon-16x16.png">
+  <link rel="manifest" href="utils/site.webmanifest">
+  <script src="https://kit.fontawesome.com/0de72deb11.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="filter-form.css">
+  <link rel="stylesheet" href="range.css">
+  <title>LightRadar</title>
+</head>
+<body>
+  <aside class="font-size">
+
+  </aside>
+  <div class="container">
+    <div class="left">
+      <article>
+        <i class="fas fa-lightbulb fa-8x" id="bulb"></i>
+        <i class="fas fa-quote-right fa-4x" id="quote"></i>
+        <h2>{{ titleForm }}</h2>
+        <h3 class="details">{{ descriptionInForm }}</h3>
+        <h4 class="invite">{{ userInvite }}</h4>
+        <input 
+          type="button" 
+          value="Quero Contribuir" 
+          class="help"/>
+
+        <form action="/users" method="post" class="form hide">
+          <input 
+            type="text" 
+            class="username" 
+            name="username" 
+            id="username" 
+            placeholder="Nome do usuário (Ex: Renan Guedes)"/>
+          <input 
+            type="text" 
+            class="mail" 
+            name="mail" 
+            placeholder="(Ex: lightradar@hotmail.com)">
+          <input 
+            type="text" 
+            class="cep" 
+            name="cep" 
+            maxlength="8" 
+            placeholder="CEP (Sem traços ou espaços)">
+          <textarea 
+            name="report" 
+            cols="30" 
+            rows="10" 
+            name="report" 
+            placeholder="Escreva seu relato"></textarea>
+          <button 
+            type="submit" 
+            id="submit">Enviar <i class="fas fa-arrow-alt-circle-right"></i>
+          </button>
+        </form>
+        
+        <img src="images/hero.png" alt="hero" class="hero hide">
+      </article>
+    </div>
+    <div class="right">
+      <h1>Reports <i class="em em-bookmark_tabs" aria-role="presentation" aria-label="BOOKMARK TABS"></i></h1>
+      <div class="filter-location">
+        <form action="/users" method="get" class="distance">
+          <div class="input-value">
+            <input id="range" class="range" name="distance" type="range" min="1" max="1000" value={{distance}}/>
+            <output id="rangevalue1"></output>
+          </div>
+          <button type="submit" class="apply">Aplicar</button>
+        </form>
+      </div>
+      <div class="cards">
+        {% for user in users %}
+        <div class="card">
+          <div class="user-info">
+            <div class="name-city">
+              <div class="geo">
+                <h3>{{ user.username }}</h3>
+                <h3 class="user_city">{{ user.user_city }}, {{ user.user_state }}</h3>
+              </div>
+              <div class="gender"></div>
+            </div>
+            <h4 class="street">{{ user.first_name }} contribuiu próximo à</h4>
+            <h4 class="district">{{ user.street }}, {{ user.district }}</h4>
+          </div>
+          <div class="report">
+            <strong>Relato</strong>
+            <p class="user_report">{{ user.report }}</p>
+          </div>
+          <a 
+            href="mailto:{{ user.mail }}?
+            &subject=App LightRadar 😎 
+            &body=Olá, {{ user.first_name }}">Enviar mensagem</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>

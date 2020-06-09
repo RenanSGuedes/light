@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@media (max-width: 1250px) {
+  .container {
+    flex-direction: column;
+  }
+  .left, .right {
+    width: 100%;
+  }
+  .right {
+    height: auto;
+    min-height: 150vh;
+  }
+}
+
+@media (max-width: 800px) {
+  .left {
+    min-height: 200vh;
+  }
+  img.hero, img.hero .hide {
+    opacity: 0;
+  }
+  form input, form textarea, form button, h3.value {
+    padding: 20px 10px;
+  }
+  .form {
+    padding: 10px 10px;
+  }
+  article {
+    width: 96%;
+  }
+  .cards {
+    justify-content: space-around;
+  }
+  .right .card {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+  }
+  .right {
+    min-height: 150vh;
+    position: relative;
+    z-index: -1;
+  }
+}

@@ -1,0 +1,32 @@
+.input-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+form.distance {
+  width: 95%;
+  margin-bottom: 20px;
+}
+
+button[type=submit].apply, h3.input-value {
+  width: 100%;
+}
+
+div.filter-location {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+h3.value {
+  background-color: #7159c1;
+  width: 100px;
+  height: auto;
+  padding: 5px;
+  border-radius: 0 5px 5px 0;
+  color: azure;
+  font-weight: 500;
+}
