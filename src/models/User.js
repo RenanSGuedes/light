@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const PointSchema = require('./PointSchema')
+const config = require('./config')
 
-mongoose.connect(process.env.MONGOBD_URI || 'mongodb+srv://omnistack_database:canto4789@cluster0-efbho.mongodb.net/power?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGOBD_URI || `mongodb+srv://${config.cl}:${config.pw}@cluster0-efbho.mongodb.net/${config.db}?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
